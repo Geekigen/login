@@ -67,7 +67,18 @@
                   class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
               </div>
 
-              
+              <div class="col-span-6 sm:col-span-3">
+                
+                <label for="role" class="block text-sm font-medium text-gray-700">
+                  Role
+                </label>
+                <select id="role" name="role"  v-model="form.role"
+                  class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm">
+              <option value=""></option>
+
+                </select>
+                
+               </div>
 
               
 
@@ -125,9 +136,19 @@ export default {
             password2: this.form.password2,
             user_role: this.form.role
           }
+
         });
-        console.log(response);
+        if(response.code !== "201")
+        alert(response.message)
+        else
+         return await navigateTo('/auth/Confirmation')
       }
+//       async  getRole(){
+//         try{
+// const response = $fetch()
+
+//         }
+//       }
      
       catch (error) {
         console.error('An error occurred:', error);
